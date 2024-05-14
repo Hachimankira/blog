@@ -32,10 +32,11 @@ const SinglePage = () => {
 
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi cum porro, recusandae fugit numquam eum beatae vero illo sint id voluptatem maiores corporis aliquam totam? Culpa eveniet nostrum excepturi voluptatum.</p>
                     </div>
+                    <div className={styles.comment}>
+                        <Comments />
+                    </div>
                 </div>
-                <div className={styles.comment}>
-                    <Comments />
-                </div>
+
                 <Menu />
             </div>
 
