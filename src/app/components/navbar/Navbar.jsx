@@ -16,9 +16,9 @@ export const Navbar = () => {
       <div className={styles.logo}>HachiBlog</div>
       <div className={styles.links}>
         <ThemeToggle />
-        <a href="/" >Homepage</a>
-        <a href="/contact" >Contact</a>
-        <a href="/about" >About</a>
+        <a href="/" className={styles.link}>Homepage</a>
+        <a href="/contact" className={styles.link}>Contact</a>
+        <a href="/about" className={styles.link} >About</a>
         <AuthLinks />
       </div>
     </div>
