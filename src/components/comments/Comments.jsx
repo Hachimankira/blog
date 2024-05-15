@@ -5,6 +5,7 @@ import styles from './comments.module.css';
 import Image from 'next/image';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -21,7 +22,21 @@ const fetcher = async (url) => {
 export const Comments = ({ postSlug }) => {
   const {status} = useSession();
 
-  const { data, isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher)
+  const { data, mutate , isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher);
+
+  const [desc , setDesc] = useState('');
+
+  const handleSubmit = async () => {
+    await fetch('http://localhost:3000/api/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ desc, postSlug }),
+    });
+    mutate();
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
@@ -30,8 +45,9 @@ export const Comments = ({ postSlug }) => {
           <textarea
             className={styles.input}
             placeholder="Write your comment here"
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
-          <button className={styles.button}>Submit</button>
+          <button className={styles.button} onClick={handleSubmit}>Submit</button>
         </div>
       ) : (
         <Link href="/login">Login to write comment</Link>
