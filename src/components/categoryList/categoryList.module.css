@@ -23,28 +23,31 @@
   border-radius: 10px;
 }
 
-.category.style {
+.category.study {
   background-color: #57c4ff31;
 }
 
-.category.fashion {
+.category.coding {
   background-color: #da85c731;
 }
 
-.category.food {
+.category.ai {
   background-color: #7fb88133;
 }
 
-.category.travel {
+.category.python {
   background-color: #ff795736;
 }
 
-.category.culture {
+.category.javascript {
   background-color: #ffb04f45;
 }
 
-.category.coding {
+.category.projects {
   background-color: #5e4fff31;
+}
+.category.dotnet {
+  background-color: #8c52ff50;
 }
 
 .image {

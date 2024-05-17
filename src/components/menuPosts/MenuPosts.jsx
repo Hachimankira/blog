@@ -14,9 +14,9 @@ export const MenuPosts = ({ posts }) => {
       {datas.map((post) => (
         <Link href={`/blog?cat=${post.category}`} className={styles.item} key={post.id}>
           {
-            post.image && (
+            post.img && (
               <div className={styles.imageContainer}>
-                <Image src={post.image} alt='img' fill className={styles.image} />
+                <Image src={post.img} alt='img' fill className={styles.image} />
               </div>
             )
           }
