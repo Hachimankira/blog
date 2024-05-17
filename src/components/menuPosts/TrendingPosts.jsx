@@ -3,23 +3,33 @@ import Link from 'next/link';
 import React from 'react'
 import styles from './menuposts.module.css'
 
-
-export const MenuPosts = ({ posts }) => {
-  if (!posts) {
-    return null; // or return some placeholder content
+const trendings = async () => {
+    const res = await fetch(`http://localhost:3000/api/menu/trending`, {
+        cache: 'no-store',
+    });
+  
+    // if (!res.ok) {
+    //   throw new Error("Failed");
+    // }
+    return res.json();
   }
-  const datas = posts;
+
+  
+export const TrendingPosts = async () => {
+//   if (!trendingsDatas) {
+//     return null; // or return some placeholder content
+//   }
+    const trendingsDatas = await trendings();
   return (
     <div className={styles.items}>
-      {datas.map((post) => (
+
+      {trendingsDatas.map((post) => (
         <Link href={`/blog?cat=${post.category}`} className={styles.item} key={post.id}>
-          {
-            post.image && (
-              <div className={styles.imageContainer}>
-                <Image src={post.image} alt='img' fill className={styles.image} />
-              </div>
-            )
-          }
+          {/* {withImage && (
+            <div className={styles.imageContainer}>
+              <Image src={post.image} alt='img' fill className={styles.image} />
+            </div>
+          )} */}
 
           <div className={styles.textContainer}>
             <span className={`${styles.category} ${styles[post.catSlug]}`}>
