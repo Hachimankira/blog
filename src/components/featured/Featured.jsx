@@ -12,6 +12,10 @@ const getData = async () => {
   return res.json();
 };
 
+function limitWords(text, limit) {
+  return text.split(' ').slice(0, limit).join(' ');
+}
+
 export const Featured = async () => {
   const datas = await getData();
 
@@ -34,9 +38,13 @@ export const Featured = async () => {
 
           <div className={styles.textContainer}>
             <h1 className={styles.postTitle}>{data.title}</h1>
-            <p className={styles.postDesc}>
+            {/* <p className={styles.postDesc}>
               {data.desc.split(" ").slice(0, 20).join(" ")}...
-            </p>
+            </p> */}
+            <div
+              className={styles.postDesc}
+              dangerouslySetInnerHTML={{ __html: limitWords(data?.desc || '', 50) }}
+            />
             {/* <button className={styles.button} onClick={readPost}>Read More</button> */}
             <Link href={`/posts/${data.slug}`} className={styles.link}>Read More</Link>
           </div>
