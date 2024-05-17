@@ -4,11 +4,20 @@
     flex-direction: column;
   }
   
+  .header{
+    display: flex;
+    align-items: center;
+  }
+
   .select{
-    margin-bottom: 50px;
-    padding: 10px 20px;
-    margin-left: 50px;
+    margin-bottom: 10px;
+    padding: 10px 30px;
+    margin-left: 550px;
+    margin-right: 70px;
     width: max-content;
+    background-color: transparent;
+    color: var(--textColor);
+    justify-content: center;
   }
   
   .editor {

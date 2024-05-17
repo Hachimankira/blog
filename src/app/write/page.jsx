@@ -2,17 +2,43 @@
 import Image from 'next/image';
 import styles from './write.module.css'
 import { useEffect, useState } from 'react';
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.bubble.css';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from '@/utils/firebase';
 import dynamic from 'next/dynamic';
+import ReactQuill from 'react-quill';
 
 const storage = getStorage(app);
 
 const WritePage = () => {
-    const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+    // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
+    const toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+        ['link', 'image'],
+
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'list': 'check' }],
+        // [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+        // [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+        // [{ 'direction': 'rtl' }],                         // text direction
+
+        // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+
+        ['clean']                                         // remove formatting button
+    ];
+
+    const module = {
+        toolbar: toolbarOptions,
+    }
 
     const { data, status } = useSession();
     const router = useRouter();
@@ -75,7 +101,7 @@ const WritePage = () => {
     const handleSubmit = async () => {
         const res = await fetch('/api/posts', {
             method: 'POST',
-            body: JSON.stringify({ title, desc: value, img: media, slug: slugify(title), catSlug: catSlug}),
+            body: JSON.stringify({ title, desc: value, img: media, slug: slugify(title), catSlug: catSlug }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -86,18 +112,11 @@ const WritePage = () => {
             router.push(`/posts/${data.slug}`);
         }
     };
+
     return (
         <div className={styles.container}>
             <input placeholder="Title" className={styles.input} onChange={e => setTitle(e.target.value)} />
-            <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-                <option value="style">style</option>
-                <option value="fashion">fashion</option>
-                <option value="food">food</option>
-                <option value="culture">culture</option>
-                <option value="travel">travel</option>
-                <option value="coding">coding</option>
-            </select>
-            <div className={styles.editor}>
+            <div className={styles.header}>
                 <button className={styles.button} onClick={() => setOpen(!open)}>
                     <Image src="/plus.png" alt='add' width={16} height={16} />
                 </button>
@@ -123,9 +142,27 @@ const WritePage = () => {
                         </button>
                     </div>
                 )}
+                
+
+
+            </div>
+
+            <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
+                    <option value="style">style</option>
+                    <option value="fashion">fashion</option>
+                    <option value="food">food</option>
+                    <option value="culture">culture</option>
+                    <option value="travel">travel</option>
+                    <option value="coding">coding</option>
+                </select>
+
+
+            <div className={styles.editor}>
+
 
                 {/* text area */}
                 <ReactQuill
+                    modules={module}
                     className={styles.textArea}
                     theme="bubble"
                     value={value}
