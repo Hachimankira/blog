@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { MenuPosts } from '../menuPosts/MenuPosts'
 import { MenuCategories } from '../menuCategories/MenuCategories'
 import { TrendingPosts } from '../menuPosts/TrendingPosts'
+import { TopContributors } from '../user/User'
 
 const getData = async () => {
   const res = await fetch(`http://localhost:3000/api/menu`, {
@@ -28,9 +29,13 @@ export const Menu = async () => {
       <TrendingPosts />
 
 
-      <h2 className={styles.subtitle}>Discover by topic.</h2>
+      {/* <h2 className={styles.subtitle}>Discover by topic.</h2>
       <h1 className={styles.title}>Categories</h1>
-      <MenuCategories />
+      <MenuCategories /> */}
+
+      <h2 className={styles.subtitle}>Our Top Contributors.</h2>
+      <h1 className={styles.title}>Contributors</h1>
+      <TopContributors />
 
       <h2 className={styles.subtitle}>Choosen by the editor</h2>
       <h1 className={styles.title}>Editor Pick</h1>

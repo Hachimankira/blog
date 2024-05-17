@@ -148,12 +148,13 @@ const WritePage = () => {
             </div>
 
             <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-                    <option value="style">style</option>
-                    <option value="fashion">fashion</option>
-                    <option value="food">food</option>
-                    <option value="culture">culture</option>
-                    <option value="travel">travel</option>
+                    <option value="javascript">javascript</option>
                     <option value="coding">coding</option>
+                    <option value="projects">projects</option>
+                    <option value="ai">ai</option>
+                    <option value="python">python</option>
+                    <option value="study">study</option>
+                    <option value="dotnet">dotnet</option>
                 </select>
 
 
@@ -167,7 +168,7 @@ const WritePage = () => {
                     theme="bubble"
                     value={value}
                     onChange={setValue}
-                    placeholder='Tell your story...'
+                    placeholder='Write and select the text to format it...'
                 />
             </div>
             <button className={styles.publish} onClick={handleSubmit}>Publish</button>

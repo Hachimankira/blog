@@ -48,6 +48,12 @@
     width: max-content;
     }
 
+.link {
+    border-bottom: 1px solid crimson;
+    width: max-content;
+    padding: 2px 0px;
+    }
+
 @media screen and (max-width: 1280px) {
     .title {
         font-size: 72px;

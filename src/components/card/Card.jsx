@@ -22,7 +22,11 @@ export const Card = ({ key, item }) => {
                 <Link href={`/posts/${item.slug}`} >
                     <h1>{item.title}</h1>
                 </Link>
-                <p className={styles.desc}>{item.desc}</p>
+                <div
+                        className={styles.desc}
+                        dangerouslySetInnerHTML={{ __html: item?.desc }}
+                    />
+                {/* <p className={styles.desc}>{item.desc.split(" ").slice(0, 30).join(" ")}...</p> */}
                 <Link href={`/posts/${item.slug}`} className={styles.link}>Read More</Link>
             </div>
         </div>

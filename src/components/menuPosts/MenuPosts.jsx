@@ -12,7 +12,7 @@ export const MenuPosts = ({ posts }) => {
   return (
     <div className={styles.items}>
       {datas.map((post) => (
-        <Link href={`/blog?cat=${post.category}`} className={styles.item} key={post.id}>
+        <Link href={`/posts/${post.slug}`} className={styles.item} key={post.id}>
           {
             post.img && (
               <div className={styles.imageContainer}>

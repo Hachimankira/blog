@@ -24,7 +24,7 @@ export const TrendingPosts = async () => {
     <div className={styles.items}>
 
       {trendingsDatas.map((post) => (
-        <Link href={`/blog?cat=${post.category}`} className={styles.item} key={post.id}>
+        <Link href={`/posts/${post.slug}`} className={styles.item} key={post.id}>
           {/* {withImage && (
             <div className={styles.imageContainer}>
               <Image src={post.image} alt='img' fill className={styles.image} />

@@ -34,7 +34,12 @@
   .desc {
     font-size: 18px;
     font-weight: 300;
-    color: var(--softTextColor);
+    color: var(--softTextColor) !important;
+    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to display */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
   }
   
   .link {

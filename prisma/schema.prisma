@@ -99,6 +99,7 @@ model Post{
   updatedAt   DateTime @updatedAt
   comments    Comment[]
   editorChoice Boolean @default(false)
+  featured     Boolean @default(false)
 }
 // comment model
 model Comment {
