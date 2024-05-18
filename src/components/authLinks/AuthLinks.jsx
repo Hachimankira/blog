@@ -14,7 +14,7 @@ const logout = (event) => {
 };
 
 const AuthLinks = () => {
-    const {status} = useSession();
+    const { status } = useSession();
     console.log(status);
     const [open, setOpen] = useState(false)
     return (
@@ -24,8 +24,8 @@ const AuthLinks = () => {
             ) : (
                 <>
                     <Link href="/write">Write</Link>
-                    <button className={styles.link} onClick={signOut}>Logout</button>
-                </>
+
+                    <Link className={styles.link} onClick={signOut} href="/logout">Logout</Link>                </>
             )}
             <div className={styles.burger} onClick={() => setOpen(!open)}>
                 <div className={styles.line}></div>

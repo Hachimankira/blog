@@ -101,7 +101,13 @@ const WritePage = () => {
     const handleSubmit = async () => {
         const res = await fetch('/api/posts', {
             method: 'POST',
-            body: JSON.stringify({ title, desc: value, img: media, slug: slugify(title), catSlug: catSlug }),
+            body: JSON.stringify({ 
+                title, 
+                desc: value, 
+                img: media, 
+                slug: slugify(title), 
+                catSlug: catSlug, 
+            }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -109,7 +115,8 @@ const WritePage = () => {
 
         if (res.status === 200) {
             const data = await res.json();
-            router.push(`/posts/${data.slug}`);
+            // router.push(`/posts/${data.slug}`);
+            router.push('/');
         }
     };
 

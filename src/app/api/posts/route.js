@@ -48,10 +48,10 @@ export const POST = async (req) => {
           data:{...body, userEmail: session.user.email},
       });
       return new NextResponse(JSON.stringify(post, { status: 200 }));
-  } catch (err) {
-      console.log(err);
+  } catch (error) {
+      console.log(error);
       return new NextResponse(
-          JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+          JSON.stringify({ message: {error} }, { status: 500 })
       );
   }
 };
