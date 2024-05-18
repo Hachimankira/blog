@@ -16,11 +16,13 @@ const getData = async () => {
 
 export const TopContributors = async () => {
     const datas = await getData();
+
+    
     return (
         <div className={styles.userList}>
 
             {datas.map((data) => (
-                <div className={styles.user}>
+                <div className={styles.user} key={data._id}>
                     {data?.image && (
                         <div className={styles.userImageContainer}>
                             <Image src={data.image} alt='img' fill className={styles.avatar} />
