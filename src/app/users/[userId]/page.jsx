@@ -1,9 +1,10 @@
+// 'use client';
 import React from 'react'
-import styles from './userProfile.module.css'
+import styles from '../userProfile.module.css'
 import { Card } from '@/components/card/Card';
 
-const getData = async () => {
-    const res = await fetch('http://localhost:3000/api/users/6644749f52fd6bdccddbc1ad', {
+const getData = async (userId) => {
+    const res = await fetch(`http://localhost:3000/api/users/${userId}`, {
         cache: 'no-store',
     });
 
@@ -14,8 +15,9 @@ const getData = async () => {
 
 }
 
-const UserProfile = async () => {
-    const data = await getData();
+const UserProfile = async ({ params }) => {
+    const { userId } = params;
+    const data = await getData(userId);
     // Destructure the user details and posts
     const { id, name, email, createdAt, image, Comment: comments, Post: posts } = data;
 
@@ -26,11 +28,14 @@ const UserProfile = async () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <div className={styles.post}>
-                    {posts.map((item) => (
-                        <Card item={item} key={item._id} />
-                    ))}
-                </div>
+                {posts ?
+                    <div className={styles.post}>
+                        {posts.map((item) => (
+                            <Card item={item} key={item._id} />
+                        ))}
+                    </div>
+                    : <h1>No posts tet!!</h1>
+                }
                 <div className={styles.user}>
                     <div className={styles.cardContainer}>
                         <header className={styles.header}>
