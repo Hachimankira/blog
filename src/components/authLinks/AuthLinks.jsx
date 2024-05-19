@@ -6,12 +6,12 @@ import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 
-const logout = (event) => {
-    const router = useRouter();
-    event.preventDefault(); // Prevent the default action (navigation)
-    localStorage.removeItem('user'); // Remove the user from local storage
-    router.push('/login'); // Navigate to the login page
-};
+// const logout = (event) => {
+//     const router = useRouter();
+//     event.preventDefault(); // Prevent the default action (navigation)
+//     localStorage.removeItem('user'); // Remove the user from local storage
+//     router.push('/login'); // Navigate to the login page
+// };
 
 const AuthLinks = () => {
     const { status } = useSession();

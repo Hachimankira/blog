@@ -29,7 +29,7 @@ export const Featured = async () => {
         <b>Hey, Kiran Shrestha here!</b> Discover my latest blogs and articles.
       </h1>
       {datas?.map((data) => (
-        <div className={styles.post}>
+        <div className={styles.post} key={data._id}>
           {data.img &&
             <div className={styles.imgContainer}>
               <Image src={data?.img} alt="img" fill className={styles.image} />

@@ -2,6 +2,7 @@
 import React from 'react'
 import styles from '../userProfile.module.css'
 import { Card } from '@/components/card/Card';
+import Image from 'next/image';
 
 const getData = async (userId) => {
     const res = await fetch(`http://localhost:3000/api/users/${userId}`, {
@@ -39,7 +40,7 @@ const UserProfile = async ({ params }) => {
                 <div className={styles.user}>
                     <div className={styles.cardContainer}>
                         <header className={styles.header}>
-                            <img src={image} alt={name} className={styles.img} />
+                            <Image src={image} alt={name} className={styles.img} width={100} height={100}/>
                         </header>
                         <div className={styles.details}>
                             <h1 className={styles.boldText}>

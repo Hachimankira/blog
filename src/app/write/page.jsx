@@ -36,7 +36,7 @@ const WritePage = () => {
         ['clean']                                         // remove formatting button
     ];
 
-    const module = {
+    const customModule = {
         toolbar: toolbarOptions,
     }
 
@@ -170,7 +170,7 @@ const WritePage = () => {
 
                 {/* text area */}
                 <ReactQuill
-                    modules={module}
+                    modules={customModule}
                     className={styles.textArea}
                     theme="bubble"
                     value={value}
