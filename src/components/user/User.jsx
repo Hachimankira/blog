@@ -21,8 +21,8 @@ export const TopContributors = async () => {
     return (
         <div className={styles.userList}>
             {datas.map((data) => (
-                <Link href={`/users/${data.id}`} >
-                    <div className={styles.user} key={data._id}>
+                <Link href={`/users/${data.id}`} key={data._id}>
+                    <div className={styles.user} >
                         {data?.image && (
                             <div className={styles.userImageContainer}>
                                 <Image src={data.image} alt='img' fill className={styles.avatar} />
