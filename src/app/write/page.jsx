@@ -53,6 +53,7 @@ const WritePage = () => {
 
 
     useEffect(() => {
+        if (typeof window !== 'undefined') {
         const upload = () => {
             const name = new Date().getTime() + file.name;
             const storageRef = ref(storage, name);
@@ -83,6 +84,7 @@ const WritePage = () => {
         };
 
         file && upload();
+    }
     }, [file]);
 
     if (status === 'loading') return <div>Loading...</div>
